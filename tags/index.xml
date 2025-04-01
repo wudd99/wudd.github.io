@@ -2,59 +2,59 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Yihao Wu</title>
-    <link>https://example.org/tags/</link>
+    <link>https://yihaow.com/tags/</link>
     <description>Recent content in Tags on Yihao Wu</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 30 Mar 2025 12:00:00 +0000</lastBuildDate>
-    <atom:link href="https://example.org/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://yihaow.com/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Animals</title>
-      <link>https://example.org/tags/animals/</link>
+      <link>https://yihaow.com/tags/animals/</link>
       <pubDate>Sun, 30 Mar 2025 12:00:00 +0000</pubDate>
-      <guid>https://example.org/tags/animals/</guid>
+      <guid>https://yihaow.com/tags/animals/</guid>
       <description></description>
     </item>
     <item>
       <title>Capybara</title>
-      <link>https://example.org/tags/capybara/</link>
+      <link>https://yihaow.com/tags/capybara/</link>
       <pubDate>Sun, 30 Mar 2025 12:00:00 +0000</pubDate>
-      <guid>https://example.org/tags/capybara/</guid>
+      <guid>https://yihaow.com/tags/capybara/</guid>
       <description></description>
     </item>
     <item>
       <title>Photos</title>
-      <link>https://example.org/tags/photos/</link>
+      <link>https://yihaow.com/tags/photos/</link>
       <pubDate>Sun, 30 Mar 2025 12:00:00 +0000</pubDate>
-      <guid>https://example.org/tags/photos/</guid>
+      <guid>https://yihaow.com/tags/photos/</guid>
       <description></description>
     </item>
     <item>
       <title>Video</title>
-      <link>https://example.org/tags/video/</link>
+      <link>https://yihaow.com/tags/video/</link>
       <pubDate>Sun, 30 Mar 2025 12:00:00 +0000</pubDate>
-      <guid>https://example.org/tags/video/</guid>
+      <guid>https://yihaow.com/tags/video/</guid>
       <description></description>
     </item>
     <item>
       <title>Blue</title>
-      <link>https://example.org/tags/blue/</link>
+      <link>https://yihaow.com/tags/blue/</link>
       <pubDate>Wed, 15 Mar 2023 11:00:00 -0700</pubDate>
-      <guid>https://example.org/tags/blue/</guid>
+      <guid>https://yihaow.com/tags/blue/</guid>
       <description></description>
     </item>
     <item>
       <title>Green</title>
-      <link>https://example.org/tags/green/</link>
+      <link>https://yihaow.com/tags/green/</link>
       <pubDate>Wed, 15 Mar 2023 11:00:00 -0700</pubDate>
-      <guid>https://example.org/tags/green/</guid>
+      <guid>https://yihaow.com/tags/green/</guid>
       <description></description>
     </item>
     <item>
       <title>Red</title>
-      <link>https://example.org/tags/red/</link>
+      <link>https://yihaow.com/tags/red/</link>
       <pubDate>Wed, 15 Mar 2023 11:00:00 -0700</pubDate>
-      <guid>https://example.org/tags/red/</guid>
+      <guid>https://yihaow.com/tags/red/</guid>
       <description></description>
     </item>
   </channel>
