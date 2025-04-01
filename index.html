@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="generator" content="Hugo 0.145.0">
+  <meta charset="UTF-8">
+  <title>Yihao Wu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --footer-height: 50px;
+      --hamburger-size: 36px;  
+      --hamburger-bg: #007acc;  
+      --hamburger-color: #fff;  
+    }
+     
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+     
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Lato", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background-color: #f5f5fa;
+      color: #333;
+      line-height: 1.6;
+      overflow: hidden;
+    }
+     
+    .container {
+      display: flex;
+      max-width: 1200px;
+      margin: 20px auto 0;
+      gap: 40px;
+      height: calc(100vh - 20px);
+      padding: 0 20px;
+    }
+     
+    .sidebar {
+      width: 300px;
+      position: sticky;
+      top: 20px;
+      flex-shrink: 0;
+    }
+     
+    .main-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+    }
+     
+    .content-area {
+      flex: 1;
+      overflow-y: auto;
+      padding-right: 30px;
+    }
+     
+    .profile-card {
+      background: #fff;
+      border: 1px solid #eaeaea;
+      border-radius: 20px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      margin-bottom: 20px;
+    }
+    .profile-card img {
+      width: 100%;
+      border-radius: 20px;
+    }
+    .profile-card h2 {
+      font-size: 24px;
+      margin: 15px 0 5px;
+    }
+    .profile-card h3 {
+      font-size: 20px;
+      color: #777;
+      margin-bottom: 10px;
+    }
+    .profile-card p {
+      font-size: 14px;
+    }
+     
+    .nav {
+      margin-top: 20px;
+    }
+    .nav ul {
+      list-style: none;
+    }
+    .nav ul li {
+      margin-bottom: 10px;
+    }
+    .nav ul li a {
+      text-decoration: none;
+      color: #007acc;
+      font-size: 16px;
+      transition: color 0.3s;
+    }
+    .nav ul li a:hover {
+      color: #005999;
+    }
+     
+    .nav .hamburger {
+      display: none;
+    }
+     
+    section {
+      margin-bottom: 10px;
+    }
+    section h2, .publications-section h2 {
+      font-size: 32px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #eaeaea;
+      padding-bottom: 10px;
+    }
+    #about p {
+      margin-bottom: 1em;
+    }
+     
+    .publication-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+    .publication-card {
+      background: #fff;
+      border: 1px solid #eaeaea;
+      border-radius: 14px;
+      padding: 14px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      transition: transform 0.2s;
+      margin-bottom: 20px;
+    }
+    .publication-card:hover {
+      transform: translateY(-5px);
+    }
+    .publication-card h3 {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+    .publication-card p {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 8px;
+    }
+    .pub-tags {
+      margin-top: 10px;
+    }
+    .pub-tag {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 14px;
+      text-decoration: none;
+      transition: background-color 0.3s;
+      margin-right: 5px;
+    }
+    .pub-tag.source {
+      background-color: #e0f7fa;
+      color: #007acc;
+    }
+    .pub-tag.source:hover {
+      background-color: #b2ebf2;
+    }
+    .pub-tag.source:active {
+      background-color: #80deea;
+    }
+    .pub-tag.link {
+      background-color: #EDE7F6;
+      color: #3F3F3F;
+    }
+    .pub-tag.link:hover {
+      background-color: #D1C4E9;
+    }
+    .pub-tag.link:active {
+      background-color: #B39DDB;
+    }
+    .pub-tag.remark {
+      background-color: #d1ffd1;
+      color: #228822;
+    }
+     
+    #contact a {
+      color: #007acc;
+      text-decoration: none;
+    }
+    #contact a:hover {
+      text-decoration: underline;
+    }
+     
+    footer {
+      height: var(--footer-height);
+      background: #f5f5fa;
+      text-align: center;
+      font-size: 14px;
+      color: #aaa;
+      border-top: 1px solid #eaeaea;
+      line-height: var(--footer-height);
+      margin-top: 40px;
+    }
+     
+    .blog-card {
+      background: #fff;
+      border: 1px solid #eaeaea;
+      border-radius: 14px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      transition: transform 0.2s;
+      margin-bottom: 20px;
+    }
+    .blog-card:hover {
+      transform: translateY(-5px);
+    }
+    .blog-card .cover-image {
+      height: 200px;
+      width: 100%;
+      overflow: hidden;
+    }
+    .blog-card .cover-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .blog-card .card-content {
+      flex: 1;
+      padding: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .blog-card .card-content h3 {
+      margin: 0 0 2px;
+      color: #000;
+      font-size: 24px;
+    }
+    .blog-card .card-content h3 a {
+      text-decoration: none;
+      color: inherit;
+    }
+    .blog-card .card-content p.summary {
+      margin: 0 0 18px;
+      color: #777;
+      font-size: 20px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .blog-card .card-content p.date {
+      margin: 0;
+      color: #777;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+     
+    .blog-post {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+      background: #fff;
+      border: 1px solid #eaeaea;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    .post-cover {
+      width: calc(100% + 40px);
+      margin: 0 -20px;
+      overflow: hidden;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+    }
+    .post-cover img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      display: block;
+    }
+    .post-header {
+      padding: 20px;
+      border-bottom: 1px solid #eaeaea;
+    }
+    .post-header h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+      color: #000;
+      font-family: 'Lato', sans-serif;
+      font-weight: bold;
+    }
+    .post-meta {
+      font-size: 16px;
+      color: #777;
+      margin: 0;
+      font-family: 'Lato', sans-serif;
+    }
+    .post-content {
+      padding: 20px;
+      font-size: 18px;
+      line-height: 1.8;
+      color: #333;
+      font-family: 'Lato', sans-serif;
+    }
+    .post-content img {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+    .post-content p {
+      margin-bottom: 20px;
+    }
+     
+    .mobile-menu {
+      display: none;
+    }
+    @media (max-width: 768px) {
+      body {
+        overflow: auto;
+      }
+      .container {
+        flex-direction: column;
+        padding: 0 10px;
+      }
+      .sidebar {
+        width: 100%;
+        position: relative;
+        top: 0;
+        margin-bottom: 20px;
+      }
+      .main-content {
+        width: 100%;
+      }
+       
+      .nav .hamburger {
+        display: block;
+        width: var(--hamburger-size);
+        height: var(--hamburger-size);
+        line-height: var(--hamburger-size);
+        text-align: center;
+        font-size: 24px;
+        cursor: pointer;
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        z-index: 100000;
+        background-color: var(--hamburger-bg);
+        color: var(--hamburger-color);
+        border-radius: 50%;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        pointer-events: auto !important;
+      }
+      .nav ul {
+        display: none;
+      }
+       
+      .mobile-menu {
+        display: block !important;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 250px;
+        height: 100%;
+        background: #fff;
+        box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease, visibility 0.3s ease;
+        z-index: 100001;
+        padding: 20px;
+        overflow-y: auto;
+        transform: translateX(-100%);
+      }
+      .mobile-menu.open {
+        transform: translateX(0) !important;
+      }
+      .mobile-menu ul {
+        list-style: none;
+        padding: 0;
+      }
+      .mobile-menu ul li {
+        margin-bottom: 15px;
+      }
+      .mobile-menu ul li a {
+        text-decoration: none;
+        font-size: 18px;
+        color: #007acc;
+      }
+      .profile-card img {
+        max-width: 240px;
+        margin: 0 auto;
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header style="height: 20px;"></header>
+  
+  <div class="mobile-menu" id="mobileMenu">
+    
+    <div class="close-menu" id="closeMenu" style="cursor: pointer; font-size: 24px; text-align: right;">&times;</div>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/#about">About</a></li>
+      <li><a href="/#publications">Publications</a></li>
+      <li><a href="/#contact">Contact</a></li>
+      <li><a href="/blog/">Capybara's blog</a></li>
+      
+    </ul>
+  </div>
+  
+  <div class="nav">
+    <div class="hamburger" id="hamburger">&#9776;</div>
+  </div>
+  <div class="container">
+    <div class="sidebar">
+      <div class="profile-card">
+        <img src="/images/wyh.jpg" alt="Profile Photo">
+        <h2>Yihao Wu</h2>
+        <h3>吴逸豪</h3>
+        <p>PhD Student</p>
+        <p>University of California, Santa Barbara</p>
+      </div>
+      <nav class="nav">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/#about">About</a></li>
+          <li><a href="/#publications">Publications</a></li>
+          <li><a href="/#contact">Contact</a></li>
+          <li><a href="/blog/">Capybara's blog</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="main-content">
+      <div class="content-area">
+        
+  
+<section id="about">
+  
+    <h2 id="welcome">Welcome!</h2>
+<p>Greetings from Yihao! I am currently a 2nd-year PhD student in the Department of Electrical and Computer Engineering at the University of California, Santa Barbara (UCSB). I am honored to have my PhD co-advised by Prof. Luke Theogarajan from UCSB, and Prof. Bongjin Kim from KAIST (Daejeon, Republic of Korea).</p>
+<p>My research interests include digital and mixed-signal in-memory computing, ASIC-based Ising machines, and hardware accelerators for Combinatorial Optimization Problems (COPs) and Artificial Intelligence (AI).</p>
+<p>Outside of academia, I enjoy playing badminton, swimming, photography, and gaming. One of my dreams is to own a pickup truck (Espicially Ford F-150 Raptor) and travel the world with a capybara by my side.</p>
+
+  
+</section>
+
+<div class="publications-section">
+  <h2>Publications</h2>
+  
+<div class="publication-grid">
+
+<section id='publication_m-zephyr-a-digital-in-memory-ising-chip-with-240-spins-featuring-enhanced-connectivity-based-on-a-modified-3d-zephyr-topology' class='publication-card'> 
+  
+  
+  
+  <h3>1. m-Zephyr: A Digital In-Memory Ising Chip with 240 Spins Featuring Enhanced Connectivity Based on a Modified 3D Zephyr Topology</h3>
+  <p> <strong>Yihao Wu</strong>, Jooyoung Bae, Chaeyun Shim, Bongjin Kim</p>
+  <div class="pub-tags">
+    <a class="pub-tag source" href='https://www.vlsisymposium.org/'>VLSI&#39;25</a>
+    
+    
+    
+    
+      
+      <a class="pub-tag remark" href="#" style="background-color: #d1ffd1;">✅ Accepted</a>
+    
+  </div>
+</section>
+
+
+<section id='publication_quantized-context-based-lif-neurons-for-recurrent-spiking-neural-networks-in-45nm' class='publication-card'> 
+  
+  
+  
+  <h3>2. Quantized Context Based LIF Neurons for Recurrent Spiking Neural Networks in 45nm</h3>
+  <p> Sai Sukruth Bezugam*, <strong>Yihao Wu*</strong>, JaeBum Yoo*, Dmitri Strukov, Bongjin Kim (*equal contribution)</p>
+  <div class="pub-tags">
+    <a class="pub-tag source" href='https://niceworkshop.org/'>NICE&#39;24</a>
+    
+    
+      <a class="pub-tag link" href='https://ieeexplore.ieee.org/document/10548306'>📄 PDF</a>
+    
+    
+    
+  </div>
+</section>
+
+
+<section id='publication_micromachined-thin-film-ceramic-pzt-multimode-resonant-temperature-sensor' class='publication-card'> 
+  
+  
+  
+  <h3>3. Micromachined Thin Film Ceramic PZT Multimode Resonant Temperature Sensor</h3>
+  <p> Wen Sui, Tahmid Kaisar, Haoran Wang, <strong>Yihao Wu</strong>, Jaesung Lee, Huikai Xie, Philip Feng</p>
+  <div class="pub-tags">
+    <a class="pub-tag source" href=''>IEEE Sensors Journal&#39;24</a>
+    
+    
+      <a class="pub-tag link" href='https://ieeexplore.ieee.org/document/10184202'>📄 PDF</a>
+    
+    
+    
+  </div>
+</section>
+
+
+<section id='publication_thin-film-pzt-multimode-resonant-mems-temperature-sensor' class='publication-card'> 
+  
+  
+  
+  <h3>4. Thin Film PZT Multimode Resonant MEMS Temperature Sensor</h3>
+  <p> Wen Sui, Tahmid Kaisar, Haoran Wang, <strong>Yihao Wu</strong>, Jaesung Lee, Huikai Xie, Philip Feng</p>
+  <div class="pub-tags">
+    <a class="pub-tag source" href='https://ieee-sensorsconference.org/'>SENSORS&#39;22</a>
+    
+    
+      <a class="pub-tag link" href='https://ieeexplore.ieee.org/document/9967330'>📄 PDF</a>
+    
+    
+    
+  </div>
+</section>
+
+
+</div>
+
+</div>
+
+
+<section id="contact">
+  
+    <h2 id="contact">Contact</h2>
+<p>1804 Ellison Hall</p>
+<p>Santa Barbara, CA 93106</p>
+<p>Email: <a href="wudd0907@gmail.com">wudd0907@gmail.com</a></p>
+
+  
+</section>
+
+
+
+      </div>
+      <footer>
+        <p>© 2025 Yihao Wu. All Rights Reserved.</p>
+      </footer>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+  <script>
+    console.log("Script loaded");
+    document.addEventListener('click', function(e) {
+      if (e.target.closest('#hamburger') || e.target.closest('#closeMenu')) {
+        return;
+      }
+      confetti({
+        particleCount: 20,
+        spread: 100,
+        origin: { x: e.clientX / window.innerWidth, y: e.clientY / window.innerHeight }
+      });
+    });
+    window.addEventListener('load', function() {
+      var hamburger = document.getElementById('hamburger');
+      var mobileMenu = document.getElementById('mobileMenu');
+      var closeMenu = document.getElementById('closeMenu');
+      console.log("On load - hamburger:", hamburger, "mobileMenu:", mobileMenu, "closeMenu:", closeMenu);
+      if (hamburger && mobileMenu) {
+        var toggleMenu = function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          console.log("Hamburger toggled via event:", e.type);
+          mobileMenu.classList.toggle('open');
+        };
+        hamburger.addEventListener('click', toggleMenu, false);
+        
+        if (closeMenu) {
+          closeMenu.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log("Close button clicked");
+            mobileMenu.classList.remove('open');
+          }, false);
+        }
+      } else {
+        console.error("未找到汉堡图标或移动端菜单元素");
+      }
+    });
+  </script>
+</body>
+</html>
