@@ -1,0 +1,6 @@
+{{ $img := .Get 0 }}
+{{ if $img }}
+  <div class="post-cover">
+    <img src="{{ $img }}" alt="Cover Image" style="width:100%; border-radius:10px;">
+  </div>
+{{ end }}

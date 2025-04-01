@@ -1,0 +1,19 @@
+<section id='publication_{{ .Get "title" | urlize }}' class='publication-card'> 
+  {{ $counter := .Page.Scratch.Get "pubCounter" | default 0 }}
+  {{ $counter = add $counter 1 }}
+  {{ .Page.Scratch.Set "pubCounter" $counter }}
+  <h3>{{ $counter }}. {{ .Get "title" | safeHTML }}</h3>
+  <p> {{ .Get "authors" | safeHTML }}</p>
+  <div class="pub-tags">
+    <a class="pub-tag source" href='{{ .Get "sourcelink" }}'>{{ .Get "source" }}</a>
+    {{ $pdf := .Get "pdf" }}
+    {{ if $pdf }}
+      <a class="pub-tag link" href='{{ $pdf }}'>📄 PDF</a>
+    {{ end }}
+    {{ $remark := .Get "remark" }}
+    {{ if $remark }}
+      {{ $remarkColor := .Get "remarkcolor" | default "#d1ffd1" }}
+      <a class="pub-tag remark" href="#" style="background-color: {{ $remarkColor }};">{{ $remark | safeHTML }}</a>
+    {{ end }}
+  </div>
+</section>

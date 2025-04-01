@@ -1,0 +1,16 @@
+{{ define "main" }}
+<article class="blog-post">
+  {{ with .Params.cover }}
+    <div class="post-cover">
+      <img src="{{ . }}" alt="{{ $.Title }}">
+    </div>
+  {{ end }}
+  <header class="post-header">
+    <h1>{{ .Title }}</h1>
+    <p class="post-meta">📅 {{ .Date.Format "January 2, 2006" }}</p>
+  </header>
+  <div class="post-content">
+    {{ .Content }}
+  </div>
+</article>
+{{ end }}

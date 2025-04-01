@@ -1,0 +1,8 @@
+{{ $id := .Get "id" | lower }}
+<section id="{{ $id }}">
+  {{ if eq $id "publications" }}
+    {{ .Inner | safeHTML }}
+  {{ else }}
+    {{ .Inner | markdownify }}
+  {{ end }}
+</section>
