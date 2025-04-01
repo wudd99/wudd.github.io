@@ -13,6 +13,150 @@
       --hamburger-bg: #007acc; /* 汉堡背景色 */
       --hamburger-color: #fff; /* 汉堡图标颜色 */
     }
+    /* Dark Mode 样式 */
+    body.dark-mode {
+      background-color: #333;
+      color: #ddd;
+    }
+    body.dark-mode a {
+      color: #66ccff;
+    }
+    body.dark-mode .mobile-menu,
+    body.dark-mode .profile-card,
+    body.dark-mode .profile-card h3,
+    body.dark-mode .publication-card,
+    body.dark-mode .blog-card,
+    body.dark-mode .card-content h3, 
+    body.dark-mode .blog-post,
+    body.dark-mode .post-header h1,
+    body.dark-mode .post-content {
+      background-color: #444;
+      border-color: #666;
+      color: #eee;
+    }
+    body.dark-mode .publication-card p,
+    body.dark-mode .card-content p.summary,
+    body.dark-mode .card-content p.date,
+    body.dark-mode .post-header p {
+      color: #c7c6c6;
+    }
+    /* 暗色模式下的 footer */
+    body.dark-mode footer {
+      background-color: #333;
+      color: #ccc;
+      border-top-color: #555;
+    }
+    /* 当 body 含 transition-enabled 时，为后代元素启用过渡动画 */
+    body.transition-enabled,
+    footer.transition-enabled,
+    body.transition-enabled .profile-card,
+    body.transition-enabled .publication-card,
+    body.transition-enabled .blog-card,
+    body.transition-enabled .post-content,
+    body.transition-enabled .post-header,
+    body.transition-enabled footer {
+      transition: background-color 0.3s, color 0.3s, border-color 0.3s, border-top-color 0.3s;
+    }
+    /* Toggle Switch 样式（桌面版） */
+    .mode-toggle {
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .mode-toggle span.label {
+      font-size: 16px;
+      text-align: left;
+    }
+    .mode-toggle .switch {
+      display: inline-block;
+      width: 40px;
+      height: 22px;
+      position: relative;
+    }
+    .mode-toggle .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .mode-toggle .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: 0.4s;
+      border-radius: 22px;
+    }
+    .mode-toggle .slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 2px;
+      bottom: 2px;
+      background-color: white;
+      transition: 0.4s;
+      border-radius: 50%;
+    }
+    .mode-toggle input:checked + .slider {
+      background-color: #007acc;
+    }
+    .mode-toggle input:checked + .slider:before {
+      transform: translateX(18px);
+    }
+    /* Toggle Switch 样式（移动端） */
+    .mobile-mode-toggle {
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .mobile-mode-toggle span.label {
+      font-size: 18px;
+      text-align: left;
+    }
+    .mobile-mode-toggle .switch {
+      display: inline-block;
+      width: 40px;
+      height: 22px;
+      position: relative;
+    }
+    .mobile-mode-toggle .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .mobile-mode-toggle .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: 0.4s;
+      border-radius: 22px;
+    }
+    .mobile-mode-toggle .slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 2px;
+      bottom: 2px;
+      background-color: white;
+      transition: 0.4s;
+      border-radius: 50%;
+    }
+    .mobile-mode-toggle input:checked + .slider {
+      background-color: #007acc;
+    }
+    .mobile-mode-toggle input:checked + .slider:before {
+      transform: translateX(18px);
+    }
     /* Reset */
     * {
       margin: 0;
@@ -32,17 +176,17 @@
       display: flex;
       max-width: 1200px;
       margin: 20px auto 0;
-      /* gap: 10px; */
       column-gap: 10px;
-      /* height: calc(100vh - 20px); */
       padding: 0 20px;
     }
-    /* Sidebar 固定在左侧 */
+    /* Sidebar 固定在左侧，并加入自适应滚动 */
     .sidebar {
       width: 300px;
       position: fixed;
       top: 20px;
       flex-shrink: 0;
+      max-height: calc(100vh - 20px);
+      overflow-y: auto;
     }
     /* Main-content 右侧区域 */
     .main-content {
@@ -52,10 +196,9 @@
       padding: 10px;
       margin-left: 330px; /* 20 + 300 + 10 */
     }
-    /* 内容区：内部滚动 */
+    /* 内容区 */
     .content-area {
       flex: 1;
-      /* overflow-y: auto; */
     }
     /* Profile 卡片样式 */
     .profile-card {
@@ -65,7 +208,6 @@
       padding: 20px;
       text-align: center;
       box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-      /* margin-bottom: 20px; */
     }
     .profile-card img {
       width: 100%;
@@ -102,9 +244,19 @@
     .nav ul li a:hover {
       color: #005999;
     }
-    /* 默认桌面端不显示汉堡图标 */
     .nav .hamburger {
       display: none;
+    }
+    /* 桌面侧边栏底部 dark mode 开关（显示在侧边栏中） */
+    .mode-toggle {
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .mode-toggle span.label {
+      font-size: 16px;
+      text-align: left;
     }
     /* Section 样式 */
     section {
@@ -112,7 +264,6 @@
     }
     section h2, .publications-section h2 {
       font-size: 32px;
-      /* margin-top: 20px; */
       margin-bottom: 20px;
       border-bottom: 2px solid #eaeaea;
       padding-bottom: 10px;
@@ -201,6 +352,7 @@
       border-top: 1px solid #eaeaea;
       line-height: var(--footer-height);
       margin-top: 40px;
+      transition: background-color 0.3s, color 0.3s, border-top-color 0.3s;
     }
     /* 博客卡片整体 */
     .blog-card {
@@ -398,6 +550,60 @@
         margin: 0 auto;
         display: block;
       }
+      /* 隐藏桌面侧边栏的 dark mode 开关 */
+      .mode-toggle {
+        display: none;
+      }
+      /* 移动端菜单中增加 dark mode 开关，带标签 */
+      .mobile-mode-toggle {
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .mobile-mode-toggle span.label {
+        font-size: 18px;
+        text-align: left;
+      }
+      .mobile-mode-toggle .switch {
+        display: inline-block;
+        width: 40px;
+        height: 22px;
+        position: relative;
+      }
+      .mobile-mode-toggle .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+      .mobile-mode-toggle .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        transition: 0.4s;
+        border-radius: 22px;
+      }
+      .mobile-mode-toggle .slider:before {
+        position: absolute;
+        content: "";
+        height: 18px;
+        width: 18px;
+        left: 2px;
+        bottom: 2px;
+        background-color: white;
+        transition: 0.4s;
+        border-radius: 50%;
+      }
+      .mobile-mode-toggle input:checked + .slider {
+        background-color: #007acc;
+      }
+      .mobile-mode-toggle input:checked + .slider:before {
+        transform: translateX(18px);
+      }
     }
   </style>
 </head>
@@ -413,8 +619,15 @@
       <li><a href="/#publications">Publications</a></li>
       <li><a href="/#contact">Contact</a></li>
       <li><a href="/blog/">Capybara's blog</a></li>
-      <!-- 根据需要添加其他链接 -->
     </ul>
+    <!-- 移动端菜单中增加 dark mode 开关，带标签 -->
+    <div class="mobile-mode-toggle">
+      <span class="label">Dark Mode</span>
+      <label class="switch">
+        <input type="checkbox" id="mobile-mode-toggle-checkbox">
+        <span class="slider"></span>
+      </label>
+    </div>
   </div>
   <!-- 顶层汉堡图标（移动端显示） -->
   <div class="nav">
@@ -438,6 +651,14 @@
           <li><a href="/blog/">Capybara's blog</a></li>
         </ul>
       </nav>
+      <!-- 桌面侧边栏底部增加 dark mode 开关，带标签 -->
+      <div class="mode-toggle">
+        <span class="label">Dark Mode</span>
+        <label class="switch">
+          <input type="checkbox" id="mode-toggle">
+          <span class="slider"></span>
+        </label>
+      </div>
     </div>
     <div class="main-content">
       <div class="content-area">
@@ -466,26 +687,73 @@
       var hamburger = document.getElementById('hamburger');
       var mobileMenu = document.getElementById('mobileMenu');
       var closeMenu = document.getElementById('closeMenu');
-      console.log("On load - hamburger:", hamburger, "mobileMenu:", mobileMenu, "closeMenu:", closeMenu);
+      var desktopToggle = document.getElementById('mode-toggle');
+      var mobileToggle = document.getElementById('mobile-mode-toggle-checkbox');
+      
+      // 读取并应用暗色模式状态（无动画）
+      var darkModeEnabled = localStorage.getItem('dark-mode') === 'true';
+      if (darkModeEnabled) {
+        document.body.classList.add('dark-mode');
+      }
+      if (desktopToggle) desktopToggle.checked = darkModeEnabled;
+      if (mobileToggle) mobileToggle.checked = darkModeEnabled;
+      
+      console.log("On load - hamburger:", hamburger, "mobileMenu:", mobileMenu, "closeMenu:", closeMenu, "desktopToggle:", desktopToggle, "mobileToggle:", mobileToggle);
+      
       if (hamburger && mobileMenu) {
+        var menuOpen = false;
         var toggleMenu = function(e) {
           e.preventDefault();
           e.stopPropagation();
           console.log("Hamburger toggled via event:", e.type);
-          mobileMenu.classList.toggle('open');
+          if (!menuOpen) {
+            mobileMenu.classList.add('open');
+            menuOpen = true;
+          } else {
+            mobileMenu.classList.remove('open');
+            menuOpen = false;
+          }
         };
         hamburger.addEventListener('click', toggleMenu, false);
-        // 绑定关闭按钮点击事件
         if (closeMenu) {
           closeMenu.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
             console.log("Close button clicked");
             mobileMenu.classList.remove('open');
+            menuOpen = false;
           }, false);
         }
       } else {
         console.error("未找到汉堡图标或移动端菜单元素");
+      }
+      
+      // Dark mode 切换函数，仅在点击时启用过渡动画
+      function toggleDarkMode(e) {
+        // 启用过渡动画
+        document.body.classList.add('transition-enabled');
+        if (e.target.checked) {
+          document.body.classList.add('dark-mode');
+          localStorage.setItem('dark-mode','true');
+        } else {
+          document.body.classList.remove('dark-mode');
+          localStorage.setItem('dark-mode','false');
+        }
+        // 同步桌面和移动端开关状态
+        if (desktopToggle) desktopToggle.checked = e.target.checked;
+        if (mobileToggle) mobileToggle.checked = e.target.checked;
+        console.log("Dark mode toggled:", e.target.checked);
+        // 500ms 后移除过渡类，确保页面跳转时无动画
+        setTimeout(function() {
+          document.body.classList.remove('transition-enabled');
+        }, 500);
+      }
+      
+      if (desktopToggle) {
+        desktopToggle.addEventListener('change', toggleDarkMode, false);
+      }
+      if (mobileToggle) {
+        mobileToggle.addEventListener('change', toggleDarkMode, false);
       }
     });
   </script>
