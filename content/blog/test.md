@@ -22,6 +22,6 @@ For more capybara adventures, check out some videos on [YouTube](https://www.you
 
 ## Conclusion
 
-I hope you enjoyed this glimpse into the capybara world. Don't forget to subscribe for more updates on my adventures!   wwwwsdfsdfsdfsdf
+I hope you enjoyed this glimpse into the capybara world. Don't forget to subscribe for more updates on my adventures!   wwwwsdfsdfsdfsdfssss
 
 
