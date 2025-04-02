@@ -3,6 +3,8 @@ languageCode = 'en-us'
 title = 'Yihao Wu'
 theme = 'wyh_card_style'
 
+disableKinds = ["taxonomy", "term"]
+
 [params]
   profilePhoto = "/images/wyh.jpg"
   name_cn = "吴逸豪"

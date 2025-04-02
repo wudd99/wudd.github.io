@@ -14,6 +14,7 @@
       --hamburger-color: #fff;  
     }
      
+    body.dark-mode footer,
     body.dark-mode {
       background-color: #333;
       color: #ddd;
@@ -23,10 +24,8 @@
     }
     body.dark-mode .mobile-menu,
     body.dark-mode .profile-card,
-    body.dark-mode .profile-card h3,
     body.dark-mode .publication-card,
     body.dark-mode .blog-card,
-    body.dark-mode .card-content h3, 
     body.dark-mode .blog-post,
     body.dark-mode .post-header h1,
     body.dark-mode .post-content {
@@ -41,11 +40,7 @@
       color: #c7c6c6;
     }
      
-    body.dark-mode footer {
-      background-color: #333;
-      color: #ccc;
-      border-top-color: #555;
-    }
+     
      
     body.transition-enabled,
     footer.transition-enabled,
@@ -219,7 +214,6 @@
     }
     .profile-card h3 {
       font-size: 20px;
-      color: #777;
       margin-bottom: 5px;
     }
     .profile-card p {
@@ -306,6 +300,7 @@
       padding: 4px 8px;
       border-radius: 6px;
       font-size: 14px;
+      font-weight: bold;
       text-decoration: none;
       transition: background-color 0.3s;
       margin-right: 5px;
@@ -352,7 +347,6 @@
       border-top: 1px solid #eaeaea;
       line-height: var(--footer-height);
       margin-top: 40px;
-      transition: background-color 0.3s, color 0.3s, border-top-color 0.3s;
     }
      
     .blog-card {
@@ -389,7 +383,6 @@
     }
     .blog-card .card-content h3 {
       margin: 0 0 2px;
-      color: #000;
       font-size: 24px;
     }
     .blog-card .card-content h3 a {
