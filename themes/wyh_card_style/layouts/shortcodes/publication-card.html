@@ -8,12 +8,12 @@
     <a class="pub-tag source" href='{{ .Get "sourcelink" }}'>{{ .Get "source" }}</a>
     {{ $pdf := .Get "pdf" }}
     {{ if $pdf }}
-      <a class="pub-tag link" href='{{ $pdf }}'>📄 PDF</a>
+      <a class="pub-tag link" href='{{ $pdf }}'>📓 PDF</a>
     {{ end }}
     {{ $remark := .Get "remark" }}
     {{ if $remark }}
       {{ $remarkColor := .Get "remarkcolor" | default "#d1ffd1" }}
-      <a class="pub-tag remark" href="#" style="background-color: {{ $remarkColor }};">{{ $remark | safeHTML }}</a>
+      <a class="pub-tag remark" style="background-color: {{ $remarkColor }};">{{ $remark | safeHTML }}</a>
     {{ end }}
   </div>
 </section>

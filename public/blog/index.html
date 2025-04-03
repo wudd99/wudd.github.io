@@ -25,6 +25,7 @@
     body.dark-mode .mobile-menu,
     body.dark-mode .profile-card,
     body.dark-mode .publication-card,
+    body.dark-mode .poster-card,
     body.dark-mode .blog-card,
     body.dark-mode .blog-post,
     body.dark-mode .post-header h1,
@@ -34,6 +35,7 @@
       color: #eee;
     }
     body.dark-mode .publication-card p,
+    body.dark-mode .poster-card p,
     body.dark-mode .card-content p.summary,
     body.dark-mode .card-content p.date,
     body.dark-mode .post-header p {
@@ -46,6 +48,7 @@
     footer.transition-enabled,
     body.transition-enabled .profile-card,
     body.transition-enabled .publication-card,
+    body.transition-enabled .poster-card,
     body.transition-enabled .blog-card,
     body.transition-enabled .post-content,
     body.transition-enabled .post-header,
@@ -256,7 +259,7 @@
     section {
       margin-bottom: 30px;
     }
-    section h2, .publications-section h2 {
+    section h2, .publications-section h2, .poster-section h2{
       font-size: 32px;
       margin-bottom: 20px;
       border-bottom: 2px solid #eaeaea;
@@ -328,6 +331,70 @@
     .pub-tag.remark {
       background-color: #d1ffd1;
       color: #228822;
+    }
+     
+    .poster-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      margin-bottom: 10px;
+    }
+    .poster-card {
+      background: #fff;
+      border: 1px solid #eaeaea;
+      border-radius: 14px;
+      padding: 14px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      transition: transform 0.2s;
+      margin-bottom: 10px;
+    }
+    .poster-card:hover {
+      transform: translateY(-5px);
+    }
+    .poster-card h3 {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+    .poster-card p {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 8px;
+    }
+    .poster-tags {
+      margin-top: 10px;
+    }
+    .poster-tag {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background-color 0.3s;
+      margin-right: 5px;
+    }
+    .poster-tag.source {
+      background-color: #e0f7fa;
+      color: #007acc;
+    }
+    .poster-tag.source:hover {
+      background-color: #b2ebf2;
+    }
+    .poster-tag.source:active {
+      background-color: #80deea;
+    }
+    .poster-tag.link {
+      background-color: #EDE7F6;
+      color: #3F3F3F;
+    }
+    .poster-tag.link:hover {
+      background-color: #D1C4E9;
+    }
+    .poster-tag.link:active {
+      background-color: #B39DDB;
+    }
+    .poster-tag.remark {
+      background-color: #d1ffd1;
+      color: #AD1457;
     }
      
     #contact a {
@@ -610,6 +677,7 @@
       <li><a href="/">Home</a></li>
       <li><a href="/#about">About</a></li>
       <li><a href="/#publications">Publications</a></li>
+      <li><a href="/#poster">Posters</a></li>
       <li><a href="/#contact">Contact</a></li>
       <li><a href="/blog/">Capybara's blog</a></li>
     </ul>
@@ -633,13 +701,14 @@
         <h2>Yihao Wu</h2>
         <h3>吴逸豪</h3>
         <p>PhD Student</p>
-        <p>University of California, Santa Barbara</p>
+        <p> University of California, Santa Barbara</p>
       </div>
       <nav class="nav">
         <ul>
           <li><a href="/">Home</a></li>
           <li><a href="/#about">About</a></li>
           <li><a href="/#publications">Publications</a></li>
+          <li><a href="/#poster">Posters</a></li>
           <li><a href="/#contact">Contact</a></li>
           <li><a href="/blog/">Capybara's blog</a></li>
         </ul>
