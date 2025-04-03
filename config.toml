@@ -1,6 +1,6 @@
 baseURL = 'https://yihaow.com/'
 languageCode = 'en-us'
-title = 'Yihao Wu'
+title = 'Yihao Wu | PhD Student, UCSB'
 theme = 'wyh_card_style'
 
 disableKinds = ["taxonomy", "term"]

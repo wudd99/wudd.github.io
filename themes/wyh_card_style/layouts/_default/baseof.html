@@ -4,8 +4,21 @@
   <meta charset="UTF-8">
   <title>{{ .Site.Title }}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Meta 标签 -->
+  <meta name="description" content="This is a personal page that displays information about Yihao Wu from UCSB, including profile, publications, blogs and more.">
+  <meta name="keywords" content="Personal Website, {{ .Site.Params.name_en }}, {{ .Site.Params.name_cn }}, {{ .Site.Params.position }}, Researches, Publications, Blogs">
+  
+  <!-- Open Graph 标签，方便社交平台预览 -->
+  <meta property="og:title" content="{{ .Site.Title }}">
+  <meta property="og:description" content="Welcome come to {{ .Site.Title }}，learn more about {{ .Site.Params.name_en }}.">
+  <meta property="og:image" content="{{ .Site.Params.profilePhoto | relURL }}">
+  <meta property="og:url" content="{{ .Site.BaseURL }}">
+  <meta property="og:type" content="website">
+  
   <!-- 加载 Lato 字体 -->
   <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+  
   <style>
     :root {
       --footer-height: 50px;
@@ -41,15 +54,10 @@
     body.dark-mode .post-header p {
       color: #c7c6c6;
     }
-    /* 暗色模式下的 footer */
-    /* body.dark-mode footer {
-      background-color: #333;
-      color: #ccc;
-      border-top-color: #555;
-    } */
     /* 当 body 含 transition-enabled 时，为后代元素启用过渡动画 */
     body.transition-enabled,
     footer.transition-enabled,
+    body.transition-enabled .mobile-menu,
     body.transition-enabled .profile-card,
     body.transition-enabled .publication-card,
     body.transition-enabled .poster-card,
@@ -167,7 +175,7 @@
     }
     /* 桌面基础样式 */
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Lato", "PingFang SC", "Microsoft YaHei", sans-serif;
+      font-family: "Lato", "Helvetica Neue", Arial, sans-serif;
       background-color: #f5f5fa;
       color: #333;
       line-height: 1.6;
@@ -263,7 +271,7 @@
     section {
       margin-bottom: 30px;
     }
-    section h2, .publications-section h2, .poster-section h2{
+    section h2, .publications-section h2, .poster-section h2 {
       font-size: 32px;
       margin-bottom: 20px;
       border-bottom: 2px solid #eaeaea;
@@ -672,9 +680,13 @@
   </style>
 </head>
 <body>
-  <header style="height: 20px;"></header>
+  <!-- 语义化 Header -->
+  <header>
+    <!-- 此处可添加 logo 或顶部信息 -->
+  </header>
+  
   <!-- 移动端菜单（初始隐藏） -->
-  <div class="mobile-menu" id="mobileMenu">
+  <nav class="mobile-menu" id="mobileMenu">
     <!-- 添加关闭按钮 -->
     <div class="close-menu" id="closeMenu" style="cursor: pointer; font-size: 24px; text-align: right;">&times;</div>
     <ul>
@@ -693,13 +705,16 @@
         <span class="slider"></span>
       </label>
     </div>
-  </div>
+  </nav>
+  
   <!-- 顶层汉堡图标（移动端显示） -->
-  <div class="nav">
+  <nav class="nav">
     <div class="hamburger" id="hamburger">&#9776;</div>
-  </div>
+  </nav>
+  
   <div class="container">
-    <div class="sidebar">
+    <!-- 侧边栏（使用语义化 aside 标签） -->
+    <aside class="sidebar">
       <div class="profile-card">
         <img src="{{ .Site.Params.profilePhoto | relURL }}" alt="Profile Photo">
         <h2>{{ .Site.Params.name_en }}</h2>
@@ -717,7 +732,7 @@
           <li><a href="/blog/">Capybara's blog</a></li>
         </ul>
       </nav>
-      <!-- 桌面侧边栏底部增加 dark mode 开关，带标签 -->
+      <!-- 桌面侧边栏底部增加 dark mode 开关 -->
       <div class="mode-toggle">
         <span class="label">Dark Mode</span>
         <label class="switch">
@@ -725,16 +740,19 @@
           <span class="slider"></span>
         </label>
       </div>
-    </div>
-    <div class="main-content">
+    </aside>
+    
+    <!-- 主要内容区域（使用语义化 main 标签） -->
+    <main class="main-content">
       <div class="content-area">
         {{ block "main" . }}{{ end }}
       </div>
       <footer>
         <p>Copyright © {{ now.Format "2006" }} {{ .Site.Title }}. All Rights Reserved.</p>
       </footer>
-    </div>
+    </main>
   </div>
+  
   <!-- Confetti 效果 -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
   <script>
@@ -796,7 +814,6 @@
       
       // Dark mode 切换函数，仅在点击时启用过渡动画
       function toggleDarkMode(e) {
-        // 启用过渡动画
         document.body.classList.add('transition-enabled');
         if (e.target.checked) {
           document.body.classList.add('dark-mode');
@@ -805,11 +822,9 @@
           document.body.classList.remove('dark-mode');
           localStorage.setItem('dark-mode','false');
         }
-        // 同步桌面和移动端开关状态
         if (desktopToggle) desktopToggle.checked = e.target.checked;
         if (mobileToggle) mobileToggle.checked = e.target.checked;
         console.log("Dark mode toggled:", e.target.checked);
-        // 500ms 后移除过渡类，确保页面跳转时无动画
         setTimeout(function() {
           document.body.classList.remove('transition-enabled');
         }, 500);
