@@ -2,10 +2,23 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Yihao Wu</title>
+  <title>Yihao Wu | PhD Student, UCSB</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
+  
+  <meta name="description" content="This is a personal page that displays information about Yihao Wu from UCSB, including profile, publications, blogs and more.">
+  <meta name="keywords" content="Personal Website, Yihao Wu, 吴逸豪, PhD Student, Researches, Publications, Blogs">
+  
+  
+  <meta property="og:title" content="Yihao Wu | PhD Student, UCSB">
+  <meta property="og:description" content="Welcome come to Yihao Wu | PhD Student, UCSB，learn more about Yihao Wu.">
+  <meta property="og:image" content="/images/wyh.jpg">
+  <meta property="og:url" content="https://yihaow.com/">
+  <meta property="og:type" content="website">
+  
+  
   <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+  
   <style>
     :root {
       --footer-height: 50px;
@@ -42,10 +55,9 @@
       color: #c7c6c6;
     }
      
-     
-     
     body.transition-enabled,
     footer.transition-enabled,
+    body.transition-enabled .mobile-menu,
     body.transition-enabled .profile-card,
     body.transition-enabled .publication-card,
     body.transition-enabled .poster-card,
@@ -163,7 +175,7 @@
     }
      
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Lato", "PingFang SC", "Microsoft YaHei", sans-serif;
+      font-family: "Lato", "Helvetica Neue", Arial, sans-serif;
       background-color: #f5f5fa;
       color: #333;
       line-height: 1.6;
@@ -259,7 +271,7 @@
     section {
       margin-bottom: 30px;
     }
-    section h2, .publications-section h2, .poster-section h2{
+    section h2, .publications-section h2, .poster-section h2 {
       font-size: 32px;
       margin-bottom: 20px;
       border-bottom: 2px solid #eaeaea;
@@ -668,9 +680,13 @@
   </style>
 </head>
 <body>
-  <header style="height: 20px;"></header>
   
-  <div class="mobile-menu" id="mobileMenu">
+  <header>
+    
+  </header>
+  
+  
+  <nav class="mobile-menu" id="mobileMenu">
     
     <div class="close-menu" id="closeMenu" style="cursor: pointer; font-size: 24px; text-align: right;">&times;</div>
     <ul>
@@ -689,13 +705,16 @@
         <span class="slider"></span>
       </label>
     </div>
-  </div>
+  </nav>
   
-  <div class="nav">
+  
+  <nav class="nav">
     <div class="hamburger" id="hamburger">&#9776;</div>
-  </div>
+  </nav>
+  
   <div class="container">
-    <div class="sidebar">
+    
+    <aside class="sidebar">
       <div class="profile-card">
         <img src="/images/wyh.jpg" alt="Profile Photo">
         <h2>Yihao Wu</h2>
@@ -721,8 +740,10 @@
           <span class="slider"></span>
         </label>
       </div>
-    </div>
-    <div class="main-content">
+    </aside>
+    
+    
+    <main class="main-content">
       <div class="content-area">
         
 <article class="blog-post">
@@ -757,10 +778,11 @@
 
       </div>
       <footer>
-        <p>Copyright © 2025 Yihao Wu. All Rights Reserved.</p>
+        <p>Copyright © 2025 Yihao Wu | PhD Student, UCSB. All Rights Reserved.</p>
       </footer>
-    </div>
+    </main>
   </div>
+  
   
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
   <script>
@@ -822,7 +844,6 @@
       
       
       function toggleDarkMode(e) {
-        
         document.body.classList.add('transition-enabled');
         if (e.target.checked) {
           document.body.classList.add('dark-mode');
@@ -831,11 +852,9 @@
           document.body.classList.remove('dark-mode');
           localStorage.setItem('dark-mode','false');
         }
-        
         if (desktopToggle) desktopToggle.checked = e.target.checked;
         if (mobileToggle) mobileToggle.checked = e.target.checked;
         console.log("Dark mode toggled:", e.target.checked);
-        
         setTimeout(function() {
           document.body.classList.remove('transition-enabled');
         }, 500);
