@@ -46,7 +46,7 @@ Outside of academia, I enjoy playing badminton, swimming, photography, and gamin
 
 Santa Barbara, CA 93106
 
-Email: [wudd0907@gmail.com](wudd0907@gmail.com)
+Email: [wudd0907@gmail.com](mailto:wudd0907@gmail.com)
 
 {{< /section >}}
 
